@@ -29,7 +29,7 @@ const addDataToHTML = () => {
             newProduct.innerHTML =
                 `<img src="${product.image}" alt="">
                 <h2>${product.name}</h2>
-                <div class="price">&#8364;${product.price.toFixed(2)}</div>
+                <div class="price">${product.price.toFixed(2)}&#8364;</div>
                 <button class="addCart">Adicionar</button>
                 <button class="Details">Detalhes</button>`;
             listProductHTML.appendChild(newProduct);
@@ -91,11 +91,11 @@ const addCartToHTML = () => {
                 <div class="name">
                 ${info.name}
                 </div>
-                <div class="totalPrice">&#8364;${info.price * item.quantity}</div>
+                <div class="totalPrice">${info.price * item.quantity}&#8364;</div>
                 <div class="quantity">
                     <span class="minus"><</span>
                     <span>${item.quantity}</span>
-                    <span class="plus">></span>
+                    <span class="plus"></span>
                 </div>
             `;
         })
