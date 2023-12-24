@@ -26,20 +26,21 @@ const addDataToHTML = () => {
     newProduct.innerHTML =
         `<h2 style="color: black; margin-top:110px; padding-left:20px">${product.name}</h2>
         <div style="display: flex; align-items: center; justify-content: space-around;">
-            <div style="flex: 1; padding-left: 40px;padding-top: 40px">
-                <img src="${product.image}" alt="">
+            <div  class="col-4" style="flex: 1; padding-top: 40px; text-align: center">
+                <img src="${product.image}" alt="" style="height: 480px; max-width: 480px; object-fit: cover; background-position: center center; background-repeat: no-repeat; background-size: cover;">
             </div>
-            <div style="flex: 1; margin-right: 50px; background-color: aliceblue; padding: 50px; border-radius: 100px">
+            <div class="col-8" style="flex: 1; margin-right: 50px; background-color: aliceblue; padding: 50px; border-radius: 100px; justify-content: center">
                 <p style="font-size:18px"><strong>Descrição: </strong>${product.descrição}</p>
                 <p style="font-size:18px"><strong>Ingredientes: </strong>${product.ingredientes}</p>
-                <a href="produtoresDetails.html">
+                <a href="produtoresDetails.html" class="nav-link">
                     <p style="font-size:18px"><strong>Fabricante: </strong>${product.fabricante}</p>
                 </a>
                 <div style="margin-bottom:20px" id="rated"><i class="fa fa-star fa-2x" aria-hidden="true" id="stars1"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars2"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars3"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars4"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars5"></i></div>
                 <div style="font-size:18px"class="price"><strong>Preço:</strong> &#8364;${product.price.toFixed(2)}</div>
                 <button onclick="goBack()" style="margin-top: 20px;float: left" class="btn">Voltar</button>
                 <button onclick="rate()" style="margin-top: 20px;float: left" id="btnStars" class="btn">Avaliar</button>
-            </div>`;
+            </div>
+        </div>`;
     listProductHTML.appendChild(newProduct);
     console.log(product.rating)
     for (let i = 0; i <= parseFloat(product.rating); i++){
