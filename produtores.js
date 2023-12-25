@@ -27,7 +27,7 @@ const addDataToHTML = () => {
         `<h2 style="color: black; margin-top:110px; padding-left:20px">${product.fabricante}</h2>
         <div class="container" style="display: flex; align-items: center; justify-content: space-around; margin-top: 60px">
             <div class="col-4" style="vertical-align: top;">
-                <img src="${product.empresa}" alt="${product.fabricante}" style="max-height: 800px; max-with: 100%">
+                <img src="${product.empresa}" alt="${product.fabricante}" style="max-height: 800px; max-width: 100%">
             </div>
             <div class="col-8" style="background-color: aliceblue; padding: 50px; border-radius: 100px; margin-left: 100px">
                 <p style="font-size:18px"><strong>Descrição: </strong>${product.biografia}</p>

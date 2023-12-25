@@ -27,7 +27,7 @@ const addDataToHTML = () => {
             newProduct.dataset.id = product.id;
             newProduct.classList.add('item');
             newProduct.innerHTML =
-                `<img src="${product.image}" alt="" style="height: 240px; max-width: 240px; object-fit: cover; background-position: center center; background-repeat: no-repeat; background-size: cover;">
+                `<img src="${product.image}" alt="" style="height: 220px; max-width: 240px; object-fit: cover; background-position: center center; background-repeat: no-repeat; background-size: cover;">
                 <h2>${product.name}</h2>
                 <div class="price">&#8364;${product.price.toFixed(2)}</div>
                 <button class="addCart">Adicionar</button>
