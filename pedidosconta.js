@@ -8,6 +8,9 @@ let butDetalhes = document.querySelector('.Details');
 let products = JSON.parse(localStorage.getItem("pedidos_conta"));
 let cart = [];
 
+$("document").ready(function(){
+    $("a[href='pedidosconta.html']").addClass("active")
+})
 
 const addDataToHTML = () => {
     // remove datas default from HTML

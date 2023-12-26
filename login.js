@@ -6,10 +6,16 @@ $("document").ready(function(){
     }
 })
 
+$(".close").click(function(){
+    var modal = document.getElementById("myModal");
+    window.location.replace('terminar.html')
+    modal.style.display = "none";
+})
 function validation(){
-    retVal = true
+    retVal = true;
+    var modal = document.getElementById("myModal");
     if (validatetipo() && vidateemail()){
-        window.location.href = "index.html";
+        modal.style.display = "block";
     }
     return false
 }
