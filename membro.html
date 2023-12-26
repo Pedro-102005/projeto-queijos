@@ -55,7 +55,7 @@
     <h1 style="text-align:center; font-size: 40px;">Torna-te Membro!</h1>
     <p style="text-align:center; font-size: 18px;">Agora você pode-se tornar membro dos 'Queijinhos da Beira'. Pode ajudar esta comunidade de fãs de queijo a crescer!</p>
     <div class="container fundo">
-        <form action="#" method="post">
+        <form action="#">
             <div class="mb-3 col-6">
                 <label for="name" class="form-label">Nome:</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Kibbi" required>
@@ -65,22 +65,35 @@
                 <input type="email" class="form-control" id="email" placeholder="exemplo@exemplo" name="email" required>
             </div>
             <div class="mb-3 col-6">
-                <label for="phone" class="form-label">Número de telefone:</label>
-                <input type="phone" class="form-control" id="phone" placeholder="+351 123 456 789" name="phone" required>
+                <label for="passe1" class="form-label">Palavra-passe:</label>
+                <input type="password" class="form-control" id="passe1" placeholder="Password" name="passe1" required>
             </div>
             <div class="mb-3 col-6">
-                <label for="company" class="form-label">Nome da Empresa:</label>
-                <input type="company" class="form-control" id="company" placeholder="Queijinhos da Beira" name="company" required>
+                <label for="passe2" class="form-label">Confirme a palavra-passe:</label>
+                <input type="password" class="form-control" id="passe2" placeholder="Password" name="passe2">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="phone" class="form-label">Número de telefone:</label>
+                <input class="form-control" id="phone" placeholder="123 456 789" name="phone">
+            </div>
+            <div class="mb-3 col-6">
+                <label for="foto" class="form-label">Foto:</label>
+                <input class="form-control" id="foto" placeholder="https://passadicosdomondego.net/queijo-serra-da-estrela.jpg" name="foto">
             </div>
             <div class="mb-3 col-6">
                 <label for="address" class="form-label">Morada Comercial:</label>
-                <input type="address" class="form-control" id="address" placeholder="Beira Baixa" name="address" required>
+                <input class="form-control" id="address" placeholder="Beira Baixa" name="address">
             </div>
-            <button type="submit" class="btn" style="background-color: black;color:white; ">Enviar</button>
+            <div class="mb-3 col-6">
+                <label for="description" class="form-label">Descrição:</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Nós somos a empresa..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn" style="background-color: black;color:white;" onclick="return validation()">Enviar</button>
 
         </form>
     </div>
-
-    <script src="../lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js" integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="membro.js"></script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+let listProductHTML = document.querySelector('.listProduct');
+let listCartHTML = document.querySelector('.listCart');
+let iconCart = document.querySelector('.icon-cart');
+let iconCartSpan = document.querySelector('.icon-cart span');
+let body = document.querySelector('body');
+let closeCart = document.querySelector('.close');
+let butDetalhes = document.querySelector('.Details');
+let products = JSON.parse(localStorage.getItem("pedidos_conta"));
+let cart = [];
+
+
+const addDataToHTML = () => {
+    // remove datas default from HTML
+
+    // add new datas
+    if (products.length > 0) // if has data
+    {
+        products.forEach(product => {
+            let newProduct = document.createElement('div');
+            newProduct.dataset.id = product.id;
+            newProduct.classList.add('item');
+            newProduct.innerHTML =
+                `<img src="${product.empresa}" alt="" style="height: 220px; max-width: 240px; object-fit: cover; background-position: center center; background-repeat: no-repeat; background-size: cover;">
+                <h2>${product.fabricante}</h2>
+                <button class="Details">Detalhes</button>`;
+            listProductHTML.appendChild(newProduct);
+        });
+    }
+}
+
+listProductHTML.addEventListener('click', (event) => {
+    let positionClick = event.target;
+    if (positionClick.classList.contains('addCart')) {
+        let id_product = positionClick.parentElement.dataset.id;
+        addToCart(id_product);
+    }
+    else if (positionClick.classList.contains('Details')) {
+        let id_detalhes = positionClick.parentElement.dataset.id;
+        localStorage.setItem("produto", id_detalhes);
+        window.location.href = "produtosDetails.html";
+    }
+
+})
+
+addDataToHTML()
