@@ -18,7 +18,11 @@ closeCart.addEventListener('click', () => {
 
 const addDataToHTML = () => {
     // remove datas default from HTML
-
+    console.log(products)
+    for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
+        products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+    }
+    console.log(products)
     // add new datas
     if (products.length > 0) // if has data
     {
@@ -29,7 +33,7 @@ const addDataToHTML = () => {
             newProduct.innerHTML =
                 `<img src="${product.image}" alt="" style="height: 220px; max-width: 240px; object-fit: cover; background-position: center center; background-repeat: no-repeat; background-size: cover;">
                 <h2>${product.name}</h2>
-                <div class="price">&#8364;${product.price.toFixed(2)}</div>
+                <div class="price">&#8364;${parseFloat(product.price).toFixed(2)}</div>
                 <button class="addCart">Adicionar</button>
                 <button class="Details">Detalhes</button>`;
             listProductHTML.appendChild(newProduct);

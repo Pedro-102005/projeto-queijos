@@ -18,6 +18,9 @@ listProductHTML.addEventListener('click', (event) => {
 })
 
 const addDataToHTML = () => {
+    for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
+        products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+    }
     product = products[parseFloat(produto)-1]
     console.log(product)
     let newProduct = document.createElement('div');
@@ -36,7 +39,7 @@ const addDataToHTML = () => {
                     <p style="font-size:18px"><strong>Fabricante: </strong>${product.fabricante}</p>
                 </a>
                 <div style="margin-bottom:20px" id="rated"><i class="fa fa-star fa-2x" aria-hidden="true" id="stars1"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars2"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars3"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars4"></i><i class="fa fa-star fa-2x" aria-hidden="true" id="stars5"></i></div>
-                <div style="font-size:18px"class="price"><strong>Preço:</strong> &#8364;${product.price.toFixed(2)}</div>
+                <div style="font-size:18px"class="price"><strong>Preço:</strong> &#8364;${parseFloat(product.price).toFixed(2)}</div>
                 <button onclick="goBack()" style="margin-top: 20px;float: left" class="btn">Voltar</button>
                 <button onclick="rate()" style="margin-top: 20px;float: left" id="btnStars" class="btn">Avaliar</button>
             </div>

@@ -40,6 +40,7 @@ function vidateemail() {
         for (i=0; i<contas.length; i++){
             if (contas[i]["email"] == _email.value){
                 if (contas[i]["pass"] == _pass.value){
+                    localStorage.setItem("conta_ativa", JSON.stringify(contas[i]))
                     return retVal
                 }
                 else{
