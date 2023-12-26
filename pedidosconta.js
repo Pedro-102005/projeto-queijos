@@ -40,7 +40,7 @@ listProductHTML.addEventListener('click', (event) => {
     else if (positionClick.classList.contains('Details')) {
         let id_detalhes = positionClick.parentElement.dataset.id;
         localStorage.setItem("produto", id_detalhes);
-        window.location.href = "produtosDetails.html";
+        window.location.href = "pedidosDetails.html";
     }
 
 })
