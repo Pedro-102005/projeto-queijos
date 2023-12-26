@@ -7,12 +7,8 @@ $("document").ready(function(){
 })
 
 function validation(){
-    retVal = true;
-    contas = JSON.parse(localStorage.getItem("contas"));
-    let passe = $("#pass").val()
-    contas.push(["ehdfk", passe])
-    localStorage.setItem("contas", JSON.stringify(contas))
-    if (validatetipo() && vidateemail() && vidatepass()){
+    retVal = true
+    if (validatetipo() && vidateemail()){
         window.location.href = "index.html";
     }
     return false
@@ -20,30 +16,38 @@ function validation(){
 
 function vidateemail() {
     var _email = document.getElementById("email")
-    if (_email.value.trim().length < 3) {
-        retVal = false;
-        alert("Coloque um email");
-    }
-    else if (_email.value.includes("@")== false){
-        retVal = false;
-        alert("O email necessita de um @");
-    }
-    else if (_email.value.split("@")[1]== ""){
-        retVal = false;
-        alert("O email necessita de um endereço a seguir do @");
-    }
-    return retVal
-}
-
-function vidatepass() {
+    let _tipo = document.querySelectorAll('input[name="tipos"]:checked')
     var _pass = document.getElementById("pass")
-    if (_pass.value.trim().length < 3) {
+    if (_tipo[0].value == "option2" && _email.value != "admin@qj.pt") {
         retVal = false;
-        alertalert("Coloque uma password com mais de 3 letras");
+        alert("email incorreto");
+    }
+    else if (_tipo[0].value == "option2" && _pass.value != "adminadmin") {
+        retVal = false;
+        alert("Palavra-passe incorreta");
+    }
+    else if(_tipo[0].value == "option2"){
+        localStorage.setItem("conta_ativa", JSON.stringify("admin"))
+    }
+    else if (_tipo[0].value == "option1"){
+        contas = JSON.parse(localStorage.getItem("contas"));
+        for (i=0; i<contas.length; i++){
+            if (contas[i][0] == _email.value){
+                if (contas[i][1] == _pass.value){
+                    return retVal
+                }
+                else{
+                    retVal = false;
+                    alert("Palavra-passe incorreta");
+                    return retVal
+                }
+            }
+        }
+        retVal = false;
+        alert("email incorreto");
     }
     return retVal
 }
-
 
 function validatetipo() {
     var _tipo = document.querySelectorAll('input[name="tipos"]:checked').length;
