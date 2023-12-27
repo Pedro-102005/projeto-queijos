@@ -3,6 +3,7 @@ let products = [];
 let listProductHTML = document.querySelector('.listProduct');
 console.log(produto)
 
+
 listProductHTML.addEventListener('click', (event) => {
     let positionClick = event.target;
     if (positionClick.classList.contains('addCart')) {
@@ -18,8 +19,11 @@ listProductHTML.addEventListener('click', (event) => {
 })
 
 const addDataToHTML = () => {
-    for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
-        products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+    if (JSON.parse(localStorage.getItem("produtos"))!= null){
+        for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
+            products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+        }
+        console.log(products)
     }
     product = products[parseFloat(produto)-1]
     console.log(product)
@@ -45,10 +49,12 @@ const addDataToHTML = () => {
             </div>
         </div>`;
     listProductHTML.appendChild(newProduct);
-    console.log(product.rating)
-    for (let i = 0; i <= parseFloat(product.rating); i++){
-        console.log("stars"+i)
-        $("#stars"+i).addClass("text-warning")
+    if (product.rating!= null){
+        console.log(product.rating)
+        for (let i = 0; i <= parseFloat(product.rating); i++){
+            console.log("stars"+i)
+            $("#stars"+i).addClass("text-warning")
+        }
     }
 }
 
@@ -58,7 +64,31 @@ function rate(){
         $("#btnStars").text("Submeter")
     }
     else{
+        let rated = 0
         $(".stars").addClass("d-none")
+        for (i=0; i<=6; i++){
+            if ($("#star"+i).css("color")=="rgb(255, 193, 7)"){
+                rated = i
+            }
+        }
+        let newrate = rated
+        if (product.rating != null){
+            newrate = (parseFloat(product.rating) + rated)/2
+            for (let i = 1; i <= 5; i++){
+                console.log("stars"+i)
+                $("#stars"+i).removeClass("text-warning")
+            }
+        }
+        for (let i = 0; i <= newrate; i++){
+            console.log("stars"+i)
+            $("#stars"+i).addClass("text-warning")
+        }
+        if (parseInt(product.id) > 8){
+            let produtos = JSON.parse(localStorage.getItem("produtos"));
+            console.log(produtos[parseFloat(produto)-9])
+            produtos[parseFloat(produto)-9]['rating'] = newrate
+            localStorage.setItem("produtos", JSON.stringify(produtos));
+        }
         $("#btnStars").text("Avaliar")
     }
 }

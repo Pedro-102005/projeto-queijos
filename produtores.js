@@ -18,8 +18,11 @@ listProductHTML.addEventListener('click', (event) => {
 })
 
 const addDataToHTML = () => {
-    for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
-        products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+    if (JSON.parse(localStorage.getItem("produtos"))!= null){
+        for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
+            products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+        }
+        console.log(products)
     }
     product = products[parseFloat(produto)-1]
     console.log(product)

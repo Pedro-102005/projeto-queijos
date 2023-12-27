@@ -19,10 +19,12 @@ closeCart.addEventListener('click', () => {
 const addDataToHTML = () => {
     // remove datas default from HTML
     console.log(products)
-    for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
-        products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+    if (JSON.parse(localStorage.getItem("produtos"))!= null){
+        for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
+            products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+        }
+        console.log(products)
     }
-    console.log(products)
     // add new datas
     if (products.length > 0) // if has data
     {
@@ -87,6 +89,7 @@ const addCartToHTML = () => {
 
             let positionProduct = products.findIndex((value) => value.id == item.product_id);
             let info = products[positionProduct];
+            console.log(positionProduct)
             listCartHTML.appendChild(newItem);
             newItem.innerHTML = `
             <div class="image">
