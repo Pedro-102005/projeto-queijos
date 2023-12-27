@@ -18,6 +18,9 @@ listProductHTML.addEventListener('click', (event) => {
 })
 
 const addDataToHTML = () => {
+    for (i=0; i< JSON.parse(localStorage.getItem("produtos")).length; i++){
+        products.push(JSON.parse(localStorage.getItem("produtos"))[i])
+    }
     product = products[parseFloat(produto)-1]
     console.log(product)
     let newProduct = document.createElement('div');
@@ -31,6 +34,7 @@ const addDataToHTML = () => {
             </div>
             <div class="col-8" style="background-color: aliceblue; padding: 50px; border-radius: 100px; margin-left: 100px">
                 <p style="font-size:18px"><strong>Descrição: </strong>${product.biografia}</p>
+                <p style="font-size:18px"><strong>Email: </strong>${product.email}</p>
                 <button onclick="goBack()" style="margin-top: 20px;float: left" class="btn">Voltar</button>
             </div>
         </div>`;
